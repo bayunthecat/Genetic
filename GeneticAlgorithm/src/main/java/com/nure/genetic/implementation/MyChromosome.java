@@ -27,6 +27,7 @@ public class MyChromosome implements Chromosome, DecimalView{
     public MyChromosome(boolean[] values) {
         binaryView = values;
         tupleLength = values.length / PLATFORM;
+        decimalView = new int[tupleLength];
         fillDecimalArray();
     }
 
@@ -40,7 +41,6 @@ public class MyChromosome implements Chromosome, DecimalView{
         return decimalView;
     }
 
-    //Wrong
     private void fillBooleanArray() {
         int overallLength = 0;
         for(int value : decimalView) {
@@ -52,10 +52,12 @@ public class MyChromosome implements Chromosome, DecimalView{
 
     private void fillDecimalArray() {
         int binaryViewPointer = 0;
+        int decimalCounter = 0;
         for(int i = 0; i < tupleLength; i++) {
             boolean[] value = new boolean[PLATFORM];
             System.arraycopy(binaryView, binaryViewPointer, value, 0, value.length);
             binaryViewPointer += value.length;
+            decimalView[decimalCounter++] = NumericUtils.transformBoolean(value, PLATFORM);
         }
     }
 
@@ -63,8 +65,8 @@ public class MyChromosome implements Chromosome, DecimalView{
     public String toString() {
         return "MyChromosome{\n" +
                 "binaryView=[" + toStringBooleanArray(binaryView) +
-                "],\ndecimalView=[" + Arrays.toString(decimalView) +
-                "]}";
+                "],\ndecimalView=" + Arrays.toString(decimalView) +
+                "\n}";
     }
 
     private String toStringBooleanArray(boolean[] array) {
@@ -72,11 +74,10 @@ public class MyChromosome implements Chromosome, DecimalView{
         int separatorCounter = 0;
         for(boolean value : array) {
             builder.append(value ? "1" : "0");
-            if(separatorCounter == PLATFORM) {
+            if(separatorCounter++ == PLATFORM - 1) {
                 builder.append(SEPARATOR);
                 separatorCounter = 0;
             }
-            separatorCounter++;
         }
         return builder.toString();
     }
