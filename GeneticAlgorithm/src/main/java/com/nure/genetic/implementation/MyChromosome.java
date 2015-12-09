@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class MyChromosome implements Chromosome, DecimalView{
 
-    private static final int PLATFORM = 32;
+    private static final int PLATFORM = 4;
     public static final String SEPARATOR = " ";
 
     private boolean[] binaryView;

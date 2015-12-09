@@ -10,9 +10,9 @@ public class TwoPointBreeder implements Breeder {
     private Random random = new Random();
 
     @Override
-    public Chromosome breed(Chromosome chr1, Chromosome chr2) {
+    public Chromosome[] breed(Chromosome chr1, Chromosome chr2) {
         boolean[] father = chr1.getBinaryValues();
-        boolean[] mother = chr1.getBinaryValues();
+        boolean[] mother = chr2.getBinaryValues();
         checkArgs(father, mother);
         int jointA = getJoint(father.length), jointB = getJoint(father.length);
         for(int i = Math.min(jointA, jointB); i < Math.max(jointA, jointB); i++) {
@@ -20,7 +20,7 @@ public class TwoPointBreeder implements Breeder {
             father[i] = mother[i];
             mother[i] = temp;
         }
-        return new MyChromosome(father);
+        return new Chromosome[] {new MyChromosome(father), new MyChromosome(mother)};
     }
 
     private int getJoint(int limit) {

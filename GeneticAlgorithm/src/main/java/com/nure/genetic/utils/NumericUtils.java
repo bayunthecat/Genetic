@@ -12,6 +12,18 @@ public class NumericUtils {
         return result;
     }
 
+    public static double checkProbability(double value, double defaultValue) {
+        return value <= 1.0 && value >= 0.0 ? value : defaultValue;
+    }
+    public static double[] convertToDoubleArray(int[] values) {
+        double[] doubleValues = new double[values.length];
+        for(int i = 0; i < values.length; i++) {
+            doubleValues[i] = values[i];
+        }
+        return doubleValues;
+    }
+
+
     public static int transformBoolean(boolean[] value, int platform) {
         StringBuilder builder = new StringBuilder();
         for(boolean val : value) {
