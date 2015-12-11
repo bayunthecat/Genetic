@@ -1,5 +1,6 @@
 package com.nure.genetic.abstraction;
 
 public interface Chromosome {
-    boolean[] getBinaryValues();
+    float[] getValues();
+    void setValues(float[] values);
 }

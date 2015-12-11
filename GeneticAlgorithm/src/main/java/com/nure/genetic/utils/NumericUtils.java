@@ -15,21 +15,36 @@ public class NumericUtils {
     public static double checkProbability(double value, double defaultValue) {
         return value <= 1.0 && value >= 0.0 ? value : defaultValue;
     }
-    public static double[] convertToDoubleArray(int[] values) {
-        double[] doubleValues = new double[values.length];
-        for(int i = 0; i < values.length; i++) {
-            doubleValues[i] = values[i];
+
+    public static boolean[] toBoolean(float value) {
+        int iee = Float.floatToIntBits(value);
+        String binary = Integer.toBinaryString(iee);
+        boolean[] result = new boolean[32];
+        for(int i = binary.length() - 1; i >= 0; i--) {
+            result[i] = binary.charAt(i) != '0';
         }
-        return doubleValues;
+        return result;
     }
 
+    public static boolean[] floatArrayToBoolean(float[] array) {
+        return null;
+    }
 
-    public static int transformBoolean(boolean[] value, int platform) {
-        StringBuilder builder = new StringBuilder();
-        for(boolean val : value) {
-            builder.append(val ? "1" : "0");
+    public static float toFloat(boolean[] value) {
+        StringBuilder binary = new StringBuilder();
+        for(int i = 0; i < value.length; i++) {
+            binary.append(value[i] ? "1" : "0");
         }
-        return Integer.parseInt(builder.toString(), 2);
+        String binString = binary.toString();
+        StringBuilder onesComplementBuilder = new StringBuilder();
+        for(char bit : binString.toCharArray()) {
+            onesComplementBuilder.append((bit == '0') ? 1 : 0);
+        }
+        String onesComplement = onesComplementBuilder.toString();
+        System.out.println(onesComplement);
+        int converted = Integer.valueOf(onesComplement, 2);
+        int v = -(converted + 1);
+        return Float.intBitsToFloat(v);
     }
 
     private NumericUtils() {}

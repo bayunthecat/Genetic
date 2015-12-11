@@ -21,9 +21,9 @@ public class RandomMutagen implements Mutagen {
 
     @Override
     public Chromosome mutate(Chromosome chromosome) {
-        boolean[] values = chromosome.getBinaryValues();
+        boolean[] values = null;
         mutate(values);
-        return new MyChromosome(values);
+        return new MyChromosome(null);
     }
 
     private void mutate(boolean[] values) {

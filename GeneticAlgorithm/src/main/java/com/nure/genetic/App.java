@@ -1,8 +1,9 @@
 package com.nure.genetic;
 
 import com.nure.genetic.abstraction.Chromosome;
-import com.nure.genetic.implementation.BreedingContainer;
-import com.nure.genetic.implementation.MyChromosome;
+import com.nure.genetic.abstraction.GeneticTask;
+import com.nure.genetic.implementation.*;
+import com.nure.genetic.utils.NumericUtils;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -10,40 +11,26 @@ import java.util.Random;
 public class App {
 
     public static void main(String[] args) {
-        Chromosome ch1 = getRandomChromosome(5, 16);
-        Chromosome ch2 = getRandomChromosome(5, 16);
-        Chromosome ch3 = getRandomChromosome(5, 16);
-        Chromosome ch4 = getRandomChromosome(5, 16);
-        Chromosome ch5 = getRandomChromosome(5, 16);
-        Chromosome[] chromosomes = {ch1, ch2, ch3, ch4, ch5};
-        BreedingContainer container = new BreedingContainer();
-        Chromosome[] population = container.getPopulation(chromosomes);
-        System.out.println("Population size ==> " + population.length);
-        System.out.println(Arrays.toString(population));
-//        Selection selection = new CrowdingOutSelection(0.7);
-//        System.out.println(Arrays.toString(selection.select(new MyFitnessFunction(), chromosomes)));
-//        System.out.println("Population:");
-//        System.out.println(Arrays.toString(chromosomes));
-//        Selection selection = new SelectiveSelection();
-//        System.out.println("Survivors:");
-//        System.out.println(Arrays.toString(selection.select(new MyFitnessFunction(), chromosomes)));
-//        Breeder breeder = new TwoPointBreeder();
-//        Mutagen mutagen = new RandomMutagen(0.91);
-//        System.out.println("F: " + ch1);
-//        System.out.println("M: " + ch2);
-//        Chromosome child = breeder.breed(ch1, ch2);
-//        System.out.println("Child: " + child);
-//        Chromosome mutant = mutagen.mutate(child);
-//        System.out.println("Mutant: " + mutant);
+//        Chromosome ch1 = getRandomChromosome(1);
+//        Chromosome ch2 = getRandomChromosome(1);
+//        Chromosome ch3 = getRandomChromosome(1);
+//        Chromosome ch4 = getRandomChromosome(1);
+//        Chromosome ch5 = getRandomChromosome(1);
+//        Chromosome[] chromosomes = {ch1, ch2, ch3, ch4, ch5};
+//        GeneticTask task = new MyGeneticTask(0.001);
+//        task.solve(new MyFitnessFunction(), new BreedingContainer(), new SelectiveSelection(), new CrowdingOutSelection(0.7), new RandomMutagen(0.26), chromosomes);
+        boolean[] array = NumericUtils.toBoolean(-0.23f);
+        System.out.println("My ==> " + Arrays.toString(array));
+        System.out.println("Reverse ==> " + NumericUtils.toFloat(array));
     }
 
-    private static Chromosome getRandomChromosome(int tupleLength, int limit) {
+    private static Chromosome getRandomChromosome(int tupleLength) {
         Random random = new Random();
         int[] values = new int[tupleLength];
         for(int i = 0; i < values.length; i++) {
-            values[i] = random.nextInt(limit);
+            values[i] = random.nextInt();
         }
-        return new MyChromosome(values);
+        return null;
     }
 
 }

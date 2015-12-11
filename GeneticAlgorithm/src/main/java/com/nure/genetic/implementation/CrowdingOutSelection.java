@@ -45,7 +45,7 @@ public class CrowdingOutSelection implements Selection {
         double[] fitnessRatios = new double[chromosomes.length];
         for (int i = 0; i < chromosomes.length; i++) {
             MyChromosome myChromosome = (MyChromosome)chromosomes[i];
-            fitnessRatios[i] = function.getValue(NumericUtils.convertToDoubleArray(myChromosome.getDecimalValues()));
+            fitnessRatios[i] = 0;
         }
         return fitnessRatios;
     }
