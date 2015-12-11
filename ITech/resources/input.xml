@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itech:Guitars xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:itech="http://nure.ua/romanchuk/itech"
+               xsi:schemaLocation="http://nure.ua/romanchuk/itech input.xsd">
+    <AcousticGuitar name="Walden" id="1">
+        <Model>Natura D 560B</Model>
+        <Country>USA</Country>
+        <Deck>
+            <Material>rosewood</Material>
+            <Type>Dreadnought</Type>
+        </Deck>
+        <Fingerboard>
+            <Material>pine</Material>
+            <Adjustable>true</Adjustable>
+        </Fingerboard>
+        <Strings>
+            <Material>metal</Material>
+            <Diameter>0.11</Diameter>
+        </Strings>
+    </AcousticGuitar>
+    <AcousticGuitar name="Walden" id="2">
+        <Model>Natura D 560</Model>
+        <Country>USA</Country>
+        <Deck>
+            <Material>rosewood</Material>
+            <Type>Dreadnought</Type>
+        </Deck>
+        <Fingerboard>
+            <Material>pine</Material>
+            <Adjustable>true</Adjustable>
+        </Fingerboard>
+        <Strings>
+            <Material>metal</Material>
+            <Diameter>0.12</Diameter>
+        </Strings>
+    </AcousticGuitar>
+    <ElectricGuitar name="Fender" id="3">
+        <Model>Squier stratocaster</Model>
+        <Country>USA</Country>
+        <Deck>
+            <Material>rosewood</Material>
+            <Type>Jumbo</Type>
+        </Deck>
+        <Fingerboard>
+            <Material>pine</Material>
+            <Adjustable>false</Adjustable>
+        </Fingerboard>
+        <Strings>
+            <Material>metal</Material>
+            <Diameter>0.12</Diameter>
+        </Strings>
+        <Adapter>
+            <Producer>Gibson</Producer>
+        </Adapter>
+    </ElectricGuitar>
+    <AcousticGuitar name="Walden" id="4">
+        <Model>Natura D 560B</Model>
+        <Country>USA</Country>
+        <Deck>
+            <Material>rosewood</Material>
+            <Type>Dreadnought</Type>
+        </Deck>
+        <Fingerboard>
+            <Material>pine</Material>
+            <Adjustable>true</Adjustable>
+        </Fingerboard>
+        <Strings>
+            <Material>metal</Material>
+            <Diameter>0.11</Diameter>
+        </Strings>
+    </AcousticGuitar>
+</itech:Guitars>
