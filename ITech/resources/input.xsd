@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://nure.ua/romanchuk/itech"
+            xmlns:itech="http://nure.ua/romanchuk/itech">
+
+    <xsd:element name="Guitars">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="AcousticGuitar" type="itech:AcousticGuitar"/>
+                    <xsd:element name="ElectricGuitar" type="itech:ElectricGuitar"/>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Guitar">
+        <xsd:sequence>
+            <xsd:element name="Model" type="xsd:string"/>
+            <xsd:element name="Country" type="xsd:string"/>
+            <xsd:element name="Deck" type="itech:Deck" maxOccurs="1"/>
+            <xsd:element name="Fingerboard" type="itech:Fingerboard" maxOccurs="1"/>
+            <xsd:element name="Strings" type="itech:Strings" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="id" type="xsd:integer" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="Deck">
+        <xsd:sequence>
+            <xsd:element name="Material"/>
+            <xsd:element name="Type" type="itech:Type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="Type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Dreadnought"/>
+            <xsd:enumeration value="Jumbo"/>
+            <xsd:enumeration value="Vstar"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="Fingerboard">
+        <xsd:sequence>
+            <xsd:element name="Material"/>
+            <xsd:element name="Adjustable" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Strings">
+        <xsd:sequence>
+            <xsd:element name="Material"/>
+            <xsd:element name="Diameter" type="itech:PositiveDouble"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="PositiveDouble">
+        <xsd:restriction base="xsd:double">
+            <xsd:minInclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="AcousticGuitar">
+        <xsd:complexContent>
+            <xsd:extension base="itech:Guitar"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ElectricGuitar">
+        <xsd:complexContent>
+            <xsd:extension base="itech:Guitar">
+                <xsd:sequence>
+                    <xsd:element name="Adapter" type="itech:Adapter"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="Adapter">
+        <xsd:sequence>
+            <xsd:element name="Producer" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
