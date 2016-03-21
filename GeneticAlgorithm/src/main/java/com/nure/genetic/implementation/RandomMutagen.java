@@ -6,6 +6,9 @@ import com.nure.genetic.utils.NumericUtils;
 
 import java.util.Random;
 
+import static com.nure.genetic.utils.NumericUtils.toBooleanArray;
+import static com.nure.genetic.utils.NumericUtils.toFloatArray;
+
 public class RandomMutagen implements Mutagen {
 
     public static final double DEFAULT_CELL_MUTATION_PROBABILITY = 0.12;
@@ -21,21 +24,20 @@ public class RandomMutagen implements Mutagen {
 
     @Override
     public Chromosome mutate(Chromosome chromosome) {
-        boolean[] values = null;
-        mutate(values);
-        return new MyChromosome(null);
+        return new MyChromosome(mutate(toBooleanArray(chromosome.getValues())));
     }
 
-    private void mutate(boolean[] values) {
+    private float[] mutate(boolean[] values) {
         boolean isMutant = random.nextDouble() < cellMutationProbability;
         if(isMutant) {
-            for (int i = 0; i < values.length; i++) {
+            for (int i = 1; i < values.length; i++) {
                 isMutant = random.nextDouble() < cellMutationProbability;
                 if(isMutant) {
                     values[i] = !values[i];
                 }
             }
         }
+        return toFloatArray(values);
     }
 
 }

@@ -1,9 +1,10 @@
 package com.epam.itech.entity;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlElement;
 
-@XmlRootElement(name = "AcousticGuitar")
 public class Guitar {
+
+    private int id;
 
     private String model;
 
@@ -15,24 +16,33 @@ public class Guitar {
 
     private Strings strings;
 
+    @XmlElement(name = "Model")
     public void setModel(String model) {
         this.model = model;
     }
 
+    @XmlElement(name = "Country")
     public void setCountry(String country) {
         this.country = country;
     }
 
+    @XmlElement(name = "Deck", type = Deck.class)
     public void setDeck(Deck deck) {
         this.deck = deck;
     }
 
+    @XmlElement(name = "Fingerboard", type = Fingerboard.class)
     public void setFingerboard(Fingerboard fingerboard) {
         this.fingerboard = fingerboard;
     }
 
+    @XmlElement(name = "Strings", type = Strings.class)
     public void setStrings(Strings strings) {
         this.strings = strings;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getModel() {
@@ -53,5 +63,20 @@ public class Guitar {
 
     public Strings getStrings() {
         return strings;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Guitar{" +
+                "model='" + model + '\'' +
+                ", country='" + country + '\'' +
+                ", deck=" + deck +
+                ", fingerboard=" + fingerboard +
+                ", strings=" + strings +
+                '}';
     }
 }

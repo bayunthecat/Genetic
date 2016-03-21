@@ -26,70 +26,74 @@ public class MySaxParser extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         tagName = qName;
-        switch (qName) {
-            case "itech:Guitars":
-                createGuitarContainer();
-                break;
-            case "AcousticGuitar":
-            case "ElectricGuitar":
-                createGuitar();
-                break;
-            case "Deck":
-                createDeck();
-                break;
-            case "Fingerboard":
-                createFingerboard();
-                break;
-            case "Strings":
-                createStrings();
-                break;
+        if(qName.equals("itech:Guitars")) {
+            createGuitarContainer();
+        }
+        if(qName.equals("AcousticGuitar")) {
+            createGuitar();
+        }
+        if(qName.equals("ElectricGuitar")) {
+            createGuitar();
+        }
+        if(qName.equals("Deck")) {
+            createDeck();
+        }
+        if(qName.equals("Fingerboard")) {
+            createFingerboard();
+        }
+        if(qName.equals("Strings")) {
+            createStrings();
         }
     }
 
+    //beware magic!
     @Override
     public void characters(char[] chars, int offset, int size) {
-        switch (tagName) {
-            case "Material":
-                setMaterial(new String(chars, offset, size));
-                break;
-            case "Diameter":
-                strings.setDiameter(Double.parseDouble(new String(chars, offset, size)));
-                break;
-            case "Type":
-                deck.setType(new String(chars, offset, size));
-                break;
-            case "Adjustable":
-                fingerboard.setAdjustable(Boolean.parseBoolean(new String (chars, offset, size)));
-                break;
-            case "Country":
-                guitar.setCountry(new String(chars, offset, size));
-                break;
-            case "Model":
-                guitar.setModel(new String(chars, offset, size));
-                break;
+        String elementText = new String(chars, offset, size);
+        if(elementText.isEmpty()) {
+            return;
+        }
+        if(tagName.equals("Diameter")) {
+            strings.setDiameter(Double.parseDouble(elementText));
+        }
+        if(tagName.equals("Type")) {
+            deck.setType(elementText);
+        }
+        if(tagName.equals("Country")) {
+            guitar.setCountry(elementText);
+        }
+        if(tagName.equals("Model")) {
+            guitar.setModel(elementText);
+        }
+        if(tagName.equals("Adjustable")) {
+            fingerboard.setAdjustable(Boolean.parseBoolean(elementText));
+        }
+        if(tagName.equals("Material")) {
+            setMaterial(elementText);
         }
     }
 
     @Override
     public void endElement(String namespaceURI, String localName, String qName) {
-        switch (qName) {
-            case "AcousticGuitar":
-            case "ElectricGuitar":
-                container.add(guitar);
-                guitar = null;
-                break;
-            case "Deck":
-                guitar.setDeck(deck);
-                deck = null;
-                break;
-            case "Fingerboard":
-                guitar.setFingerboard(fingerboard);
-                guitar = null;
-                break;
-            case "Strings":
-                guitar.setStrings(strings);
-                strings = null;
-                break;
+        if(qName.equals("AcousticGuitar")) {
+            container.add(guitar);
+            return;
+        }
+        if(qName.equals("ElectricGuitar")) {
+            container.add(guitar);
+            return;
+        }
+        if(qName.equals("Deck")) {
+            guitar.setDeck(deck);
+            deck = null;
+        }
+        if(qName.equals("Fingerboard")) {
+            guitar.setFingerboard(fingerboard);
+            fingerboard = null;
+        }
+        if(qName.equals("Strings")) {
+            guitar.setStrings(strings);
+            strings = null;
         }
         this.tagName = "";
     }

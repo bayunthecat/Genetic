@@ -2,9 +2,10 @@ package com.nure.genetic.implementation;
 
 import com.nure.genetic.abstraction.Breeder;
 import com.nure.genetic.abstraction.Chromosome;
-import com.nure.genetic.utils.NumericUtils;
 
 import java.util.Random;
+
+import static com.nure.genetic.utils.NumericUtils.*;
 
 public class TwoPointBreeder implements Breeder {
 
@@ -12,8 +13,8 @@ public class TwoPointBreeder implements Breeder {
 
     @Override
     public Chromosome[] breed(Chromosome chr1, Chromosome chr2) {
-        boolean[] father = toBoolean(chr1.getValues());
-        boolean[] mother = toBoolean(chr2.getValues());
+        boolean[] father = toBooleanArray(chr1.getValues());
+        boolean[] mother = toBooleanArray(chr2.getValues());
         checkArgs(father, mother);
         int jointA = getJoint(father.length), jointB = getJoint(father.length);
         for(int i = Math.min(jointA, jointB); i < Math.max(jointA, jointB); i++) {
@@ -21,7 +22,7 @@ public class TwoPointBreeder implements Breeder {
             father[i] = mother[i];
             mother[i] = temp;
         }
-        return new Chromosome[] {};
+        return new Chromosome[] {new MyChromosome(toFloatArray(father)), new MyChromosome(toFloatArray(mother))};
     }
 
     private int getJoint(int limit) {
@@ -37,19 +38,5 @@ public class TwoPointBreeder implements Breeder {
         }
     }
 
-    private float[] toFloat(float[] array) {
-        float[] result = new float[array.length];
-        return null;
-    }
 
-    private boolean[] toBoolean(float[] array) {
-        boolean[] result = new boolean[array.length * 32];
-        int resultIndex = 0;
-        for (int i = 0; i < array.length; i++) {
-            boolean[] value = NumericUtils.toBoolean(array[i]);
-            System.arraycopy(value, 0, result, resultIndex, value.length);
-            resultIndex += value.length;
-        }
-        return result;
-    }
 }

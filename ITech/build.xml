@@ -1,0 +1,51 @@
+<project name="SimpleAxis2" basedir="." default="aar.server">
+    <!-- Определяем необходимые параметры-->
+    <!--Директории -->
+    <property name="src.dir" value="${basedir}/src" />
+    <property name="build.dir" value="${basedir}/build" />
+    <property name="dist.dir" value="${basedir}/dist" />
+    <property name="lib.dir" value="${basedir}/lib" />
+    <property name="axis2.home" value="D:\Soft\axis2-1.7.1" />
+
+    <!-- Web Service Name -->
+    <property name="service.name" value="itech" />
+    <!-- Web Service Namespace -->
+    <property name="service.namespace" value="http://services.itech.epam.com" />
+    <!-- Web Service Data Namespace -->
+    <property name="services.data.namespace" value="http://data.example.second.axis2.my" />
+    <!-- Java Package Name -->
+    <property name="service.java.packageName" value="com.epam.itech.service" />
+    <property name="service.java.name" value="itech" />
+    <property name="service.class" value="${service.java.packageName}.${service.java.name}" />
+    <property name="service.wsdl" value="${service.name}.wsdl" />
+
+    <path id="classpath">
+        <pathelement location="${build.dir}" />
+        <fileset dir="${axis2.home}\lib">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+    <property name="axis2.classpath" value="classpath" />
+
+    <target name="clean">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="${build.dir}" />
+
+        <javac debug="on" fork="true" destdir="${build.dir}" srcdir="${basedir}/src" classpathref="classpath">
+        </javac>
+    </target>
+
+    <target name="aar.server" depends="compile">
+        <mkdir dir="${build.dir}/META-INF" />
+        <mkdir dir="${build.dir}/lib" />
+        <copy toDir="${build.dir}/META-INF">
+            <fileset dir="${src.dir}/META-INF" />
+        </copy>
+        <jar destfile="${dist.dir}/${service.name}.aar">
+            <fileset dir="${build.dir}"/>
+        </jar>
+    </target>
+</project>

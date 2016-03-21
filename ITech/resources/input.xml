@@ -34,25 +34,6 @@
             <Diameter>0.12</Diameter>
         </Strings>
     </AcousticGuitar>
-    <ElectricGuitar name="Fender" id="3">
-        <Model>Squier stratocaster</Model>
-        <Country>USA</Country>
-        <Deck>
-            <Material>rosewood</Material>
-            <Type>Jumbo</Type>
-        </Deck>
-        <Fingerboard>
-            <Material>pine</Material>
-            <Adjustable>false</Adjustable>
-        </Fingerboard>
-        <Strings>
-            <Material>metal</Material>
-            <Diameter>0.12</Diameter>
-        </Strings>
-        <Adapter>
-            <Producer>Gibson</Producer>
-        </Adapter>
-    </ElectricGuitar>
     <AcousticGuitar name="Walden" id="4">
         <Model>Natura D 560B</Model>
         <Country>USA</Country>

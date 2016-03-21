@@ -2,16 +2,6 @@ package com.nure.genetic.utils;
 
 public class NumericUtils {
 
-    public static boolean[] transformInt(int value, int platform) {
-        String binaryValue = Integer.toBinaryString(value);
-        boolean[] result = new boolean[platform];
-        int resultCount = result.length - 1;
-        for (int i = binaryValue.length() - 1; i >= 0; i--) {
-            result[resultCount--] = binaryValue.charAt(i) != '0';
-        }
-        return result;
-    }
-
     public static double checkProbability(double value, double defaultValue) {
         return value <= 1.0 && value >= 0.0 ? value : defaultValue;
     }
@@ -26,8 +16,15 @@ public class NumericUtils {
         return result;
     }
 
-    public static boolean[] floatArrayToBoolean(float[] array) {
-        return null;
+    public static boolean[] toBooleanArray(float[] array) {
+        boolean[] result = new boolean[array.length * 32];
+        int resultIndex = 0;
+        for (float anArray : array) {
+            boolean[] value = toBoolean(anArray);
+            System.arraycopy(value, 0, result, resultIndex, value.length);
+            resultIndex += value.length;
+        }
+        return result;
     }
 
     public static float toFloat(boolean[] value) {
@@ -41,10 +38,22 @@ public class NumericUtils {
             onesComplementBuilder.append((bit == '0') ? 1 : 0);
         }
         String onesComplement = onesComplementBuilder.toString();
-        System.out.println(onesComplement);
         int converted = Integer.valueOf(onesComplement, 2);
         int v = -(converted + 1);
-        return Float.intBitsToFloat(v);
+        return Float.intBitsToFloat(v) * 1000 / 1000;
+    }
+
+    public static float[] toFloatArray(boolean[] array) {
+        int tupleLength = array.length / 32;
+        int counter = 0;
+        float[] result = new float[tupleLength];
+        for (int i = 0; i < tupleLength; i++) {
+            boolean[] number = new boolean[32];
+            System.arraycopy(array, counter, number, 0, number.length);
+            result[i] = toFloat(number);
+            counter += 32;
+        }
+        return result;
     }
 
     private NumericUtils() {}

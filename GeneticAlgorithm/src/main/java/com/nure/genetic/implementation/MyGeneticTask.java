@@ -34,7 +34,6 @@ public class MyGeneticTask implements GeneticTask {
             currentPopulation = populationSelector.select(fitnessFunction, currentPopulation);
             System.out.println("Descendants [Crossover complete] " + Arrays.toString(currentPopulation));
             bestChromosome = getBestValue(fitnessFunction, currentPopulation);
-            currentValue = 0;
         }
         System.out.println("And the winner is: " + bestChromosome);
         return bestChromosome;
@@ -48,11 +47,10 @@ public class MyGeneticTask implements GeneticTask {
     }
 
     private Chromosome getBestValue(FitnessFunction function, Chromosome[] chromosomes) {
-        double max = 0;
+        float max = 0;
         Chromosome best = chromosomes[0];
         for (Chromosome chromosome : chromosomes) {
-            MyChromosome chr = (MyChromosome) chromosome;
-            double current = 0;
+            float current = function.getValue(chromosome.getValues());
             if (current > max) {
                 max = current;
                 best = chromosome;

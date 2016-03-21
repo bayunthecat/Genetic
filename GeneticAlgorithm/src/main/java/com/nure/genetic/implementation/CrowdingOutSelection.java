@@ -21,14 +21,13 @@ public class CrowdingOutSelection implements Selection {
 
     @Override
     public Chromosome[] select(FitnessFunction function, Chromosome... chromosomes) {
-        double[] fitnessRatios = getFitnessRatios(function, chromosomes);
-        //noinspection ToArrayCallWithZeroLengthArrayArgument
-        return choosePopulation(fitnessRatios, chromosomes).toArray(new Chromosome[0]);
+        float[] fitnessRatios = getFitnessRatios(function, chromosomes);
+        return choosePopulation(fitnessRatios, chromosomes).toArray(new Chromosome[1]);
     }
 
-    private List<Chromosome> choosePopulation(double[] fitnessRatios, Chromosome[] chromosomes) {
+    private List<Chromosome> choosePopulation(float[] fitnessRatios, Chromosome[] chromosomes) {
         List<Chromosome> futurePopulation = new ArrayList<>();
-        double best = getMaxAdaptationRatio(fitnessRatios), worst = getMinAdaptationRatio(fitnessRatios);
+        float best = getMaxAdaptationRatio(fitnessRatios), worst = getMinAdaptationRatio(fitnessRatios);
         for (int i = 0; i < chromosomes.length; i++) {
             if(countUse(fitnessRatios[i], best, worst) >= fitnessRatio) {
                 futurePopulation.add(chromosomes[i]);
@@ -37,34 +36,33 @@ public class CrowdingOutSelection implements Selection {
         return futurePopulation;
     }
 
-    private double countUse(double current, double best, double worst) {
+    private double countUse(float current, float best, float worst) {
         return (current - worst) / (best - worst);
     }
 
-    private double[] getFitnessRatios(FitnessFunction function, Chromosome[] chromosomes) {
-        double[] fitnessRatios = new double[chromosomes.length];
+    private float[] getFitnessRatios(FitnessFunction function, Chromosome[] chromosomes) {
+        float[] fitnessRatios = new float[chromosomes.length];
         for (int i = 0; i < chromosomes.length; i++) {
-            MyChromosome myChromosome = (MyChromosome)chromosomes[i];
-            fitnessRatios[i] = 0;
+            fitnessRatios[i] = function.getValue(chromosomes[i].getValues());
         }
         return fitnessRatios;
     }
 
-    private double getMaxAdaptationRatio(double[] array) {
-        double max = Double.MIN_VALUE;
-        for(double d : array) {
-            if(d > max) {
-                max = d;
+    private float getMaxAdaptationRatio(float[] array) {
+        float max = Float.MIN_VALUE;
+        for(float f : array) {
+            if(f > max) {
+                max = f;
             }
         }
         return max;
     }
 
-    private double getMinAdaptationRatio(double[] array) {
-        double min = Double.MAX_VALUE;
-        for(double d : array) {
-            if(d < min) {
-                min = d;
+    private float getMinAdaptationRatio(float[] array) {
+        float min = Float.MAX_VALUE;
+        for(float f : array) {
+            if(f < min) {
+                min = f;
             }
         }
         return min;

@@ -3,7 +3,6 @@ package com.epam.itech.entity;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "Deck")
 public class Deck {
 
     private String material;
@@ -18,5 +17,21 @@ public class Deck {
     @XmlElement(name = "Type")
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public String toString() {
+        return "Deck{" +
+                "material='" + material + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

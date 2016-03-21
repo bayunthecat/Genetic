@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="anime_sucks.xsl"?>
+<tns:worldart xmlns:tns="http://www.example.org/WorldartXMLSchema"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.example.org/WorldartXMLSchema ">
+    <tns:animetitle id="1">
+        <tns:title>Garo:Guren no Tsuki</tns:title>
+        <tns:yearstart>2015</tns:yearstart>
+        <tns:originalauthor id="1">
+            <tns:firstName>Keita</tns:firstName>
+            <tns:lastName>Amemiya</tns:lastName>
+            <tns:birthYear>1959</tns:birthYear>
+            <tns:deathYear>-</tns:deathYear>
+            <tns:country>Japan</tns:country>
+            <tns:gender>male</tns:gender>
+        </tns:originalauthor>
+        <tns:type>TV</tns:type>
+        <tns:season>3d season</tns:season>
+        <tns:producer id="1">
+            <tns:name>MAPPA</tns:name>
+            <tns:year>2011</tns:year>
+            <tns:country>Japan</tns:country>
+        </tns:producer>
+    </tns:animetitle>
+
+    <tns:animetitle id="2">
+        <tns:title>Umi neko no Naku Koro ni</tns:title>
+        <tns:yearstart>2009</tns:yearstart>
+        <tns:originalauthor id="2">
+            <tns:firstName>Ryukishi</tns:firstName>
+            <tns:lastName>07</tns:lastName>
+            <tns:birthYear>1973</tns:birthYear>
+            <tns:deathYear>-</tns:deathYear>
+            <tns:country>Japan</tns:country>
+            <tns:gender>male</tns:gender>
+        </tns:originalauthor>
+        <tns:type>TV</tns:type>
+        <tns:season>1 season</tns:season>
+        <tns:producer id="2">
+            <tns:name>DEEN</tns:name>
+            <tns:year>1975</tns:year>
+            <tns:country>Japan</tns:country>
+        </tns:producer>
+    </tns:animetitle>
+
+    <tns:animetitle id="3">
+        <tns:title>Steins;Gate</tns:title>
+        <tns:yearstart>2011</tns:yearstart>
+        <tns:originalauthor id="3">
+            <tns:firstName>Jukki</tns:firstName>
+            <tns:lastName>Hanada</tns:lastName>
+            <tns:birthYear>1969</tns:birthYear>
+            <tns:deathYear>-</tns:deathYear>
+            <tns:country>Japan</tns:country>
+            <tns:gender>male</tns:gender>
+        </tns:originalauthor>
+        <tns:type>TV</tns:type>
+        <tns:season>1 season</tns:season>
+        <tns:producer id="3">
+            <tns:name>WhiteFox</tns:name>
+            <tns:year>2007</tns:year>
+            <tns:country>Japan</tns:country>
+        </tns:producer>
+    </tns:animetitle>
+
+    <tns:animetitle id="4">
+        <tns:title>Owari no Seraph: Nagoya Kessen Hen</tns:title>
+        <tns:yearstart>2015</tns:yearstart>
+        <tns:originalauthor id="4">
+            <tns:firstName>Takaya</tns:firstName>
+            <tns:lastName>Kagami</tns:lastName>
+            <tns:birthYear>1979</tns:birthYear>
+            <tns:deathYear>-</tns:deathYear>
+            <tns:country>Japan</tns:country>
+            <tns:gender>male</tns:gender>
+        </tns:originalauthor>
+        <tns:type>TV</tns:type>
+        <tns:season>2d season</tns:season>
+        <tns:producer id="4">
+            <tns:name>WIT</tns:name>
+            <tns:year>2012</tns:year>
+            <tns:country>Japan</tns:country>
+        </tns:producer>
+    </tns:animetitle>
+
+    <tns:animetitle id="5">
+        <tns:title>Sakurako</tns:title>
+        <tns:yearstart>2015</tns:yearstart>
+        <tns:originalauthor id="5">
+            <tns:firstName>Shiori</tns:firstName>
+            <tns:lastName>Oota</tns:lastName>
+            <tns:birthYear>1978</tns:birthYear>
+            <tns:deathYear>-</tns:deathYear>
+            <tns:country>Japan</tns:country>
+            <tns:gender>female</tns:gender>
+        </tns:originalauthor>
+        <tns:type>TV</tns:type>
+        <tns:season>1 season</tns:season>
+        <tns:producer id="5">
+            <tns:name>Troyca</tns:name>
+            <tns:year>2013</tns:year>
+            <tns:country>Japan</tns:country>
+        </tns:producer>
+    </tns:animetitle>
+
+</tns:worldart>

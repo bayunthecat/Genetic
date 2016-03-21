@@ -22,4 +22,20 @@ public class MyChromosome implements Chromosome {
     public float[] getValues() {
         return values;
     }
+
+    @Override
+    public String toString() {
+        return "MyChromosome{" +
+                "values=\n" + Arrays.toString(values) +
+                "\nbinary=\n" + toString(NumericUtils.toBooleanArray(values)) +
+                '}';
+    }
+
+    private String toString(boolean[] values) {
+        StringBuilder builder = new StringBuilder();
+        for (boolean b : values) {
+            builder.append(b ? "1" : "0");
+        }
+        return builder.toString();
+    }
 }

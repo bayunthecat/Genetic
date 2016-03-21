@@ -1,0 +1,20 @@
+<service>
+    <parameter name="ServiceClass"
+               locked="false">com.epam.itech.service.SimpleGuitarService</parameter>
+
+    <operation name="add">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <operation name="delete">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <operation name="getAll">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <operation name="getGuitarById">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <operation name="getGuitars">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+</service>

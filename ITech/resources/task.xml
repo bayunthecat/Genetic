@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itech:Guitars xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:itech="http://nure.ua/romanchuk/itech"
+               xsi:schemaLocation="http://nure.ua/romanchuk/itech task.xsd">
+
+</itech:Guitars>
